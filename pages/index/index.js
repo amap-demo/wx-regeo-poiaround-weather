@@ -13,5 +13,10 @@ Page({
     wx.navigateTo({
       url: '../poi/poi'
     })
+  },
+  naviToStatic: function(){
+    wx.navigateTo({
+      url: '../staticmap/staticmap'
+    })
   }
 })
