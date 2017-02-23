@@ -1,4 +1,6 @@
-var amapFile = require('../../libs/amap-wx.js')
+var amapFile = require('../../libs/amap-wx.js');
+var config = require('../../libs/config.js');
+
 Page({
   data: {
     markers: [],
@@ -8,7 +10,8 @@ Page({
   },
   onLoad: function() {
     var that = this;
-    var myAmapFun = new amapFile.AMapWX({key:'您的key'});
+    var key = config.Config.key;
+    var myAmapFun = new amapFile.AMapWX({key: key});
     myAmapFun.getRegeo({
       iconPath: "../../img/marker.png",
       iconWidth: 22,

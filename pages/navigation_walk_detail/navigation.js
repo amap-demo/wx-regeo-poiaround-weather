@@ -3,20 +3,25 @@ var config = require('../../libs/config.js');
 
 Page({
   data: {
-    weather: {}
+    steps: {}
   },
   onLoad: function() {
     var that = this;
     var key = config.Config.key;
     var myAmapFun = new amapFile.AMapWX({key: key});
-    myAmapFun.getWeather({
+    myAmapFun.getWalkingRoute({
+      origin: '116.481028,39.989643',
+      destination: '116.434446,39.90816',
       success: function(data){
-        that.setData({
-          weather: data
-        });
+        if(data.paths && data.paths[0] && data.paths[0].steps){
+          that.setData({
+            steps: data.paths[0].steps
+          });
+        }
+          
       },
       fail: function(info){
-        wx.showModal({title:info.errMsg})
+
       }
     })
   }

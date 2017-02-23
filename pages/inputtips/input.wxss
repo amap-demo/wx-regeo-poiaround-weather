@@ -1,0 +1,17 @@
+.section{
+  height: 30px;
+  width: 100%;
+}
+.section input{
+  width:90%;
+  margin:5px auto;
+  border:1px solid #c3c3c3;
+  height:30px;
+  border-radius: 3px;
+  padding: 0 5px;
+}
+.text_box{
+  margin: 10px 25px;
+  border-bottom:1px solid #c3c3c3;
+  padding-bottom:10px
+}

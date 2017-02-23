@@ -1,6 +1,18 @@
+.section{
+  height: 30px;
+  width: 100%;
+}
+.section input{
+  width:90%;
+  margin:5px auto;
+  border:1px solid #c3c3c3;
+  height:30px;
+  border-radius: 3px;
+  padding: 0 5px;
+}
 .map_container{
   position: absolute;
-  top: 0;
+  top: 42px;
   bottom: 80px;
   left: 0;
   right: 0;

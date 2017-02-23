@@ -1,0 +1,23 @@
+.flex-style{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex-item{
+  height: 35px; 
+  line-height: 35px;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1
+}
+.flex-item.active{
+  color:#0091ff;
+}
+.text_box{
+  margin: 0 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #c3c3c3;
+  font-size: 13px;
+}
+.text_box .text_item{display:inline-block;line-height: 8px;}

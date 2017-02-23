@@ -1,11 +1,14 @@
-var amapFile = require('../../libs/amap-wx.js')
+var amapFile = require('../../libs/amap-wx.js');
+var config = require('../../libs/config.js');
+
 var markersData = [];
 Page({
   data: {
     markers: [],
     latitude: '',
     longitude: '',
-    textData: {}
+    textData: {},
+    city: ''
   },
   makertap: function(e) {
     var id = e.markerId;
@@ -13,28 +16,58 @@ Page({
     that.showMarkerInfo(markersData,id);
     that.changeMarkerColor(markersData,id);
   },
-  onLoad: function() {
+  onLoad: function(e) {
     var that = this;
-    var myAmapFun = new amapFile.AMapWX({key:'您的key'});
-    myAmapFun.getPoiAround({
+    var key = config.Config.key;
+    var myAmapFun = new amapFile.AMapWX({key: key});
+    var params = {
       iconPathSelected: '../../img/marker_checked.png',
       iconPath: '../../img/marker.png',
       success: function(data){
         markersData = data.markers;
-        that.setData({
-          markers: markersData
-        });
-        that.setData({
-          latitude: markersData[0].latitude
-        });
-        that.setData({
-          longitude: markersData[0].longitude
-        });
-        that.showMarkerInfo(markersData,0);
+        var poisData = data.poisData;
+        if(markersData.length > 0){
+          that.setData({
+            markers: markersData
+          });
+          that.setData({
+            city: poisData[0].cityname || ''
+          });
+          that.setData({
+            latitude: markersData[0].latitude
+          });
+          that.setData({
+            longitude: markersData[0].longitude
+          });
+          that.showMarkerInfo(markersData,0);
+        }else{
+          that.setData({
+            textData: {
+              name: '抱歉，未找到结果',
+              desc: ''
+            }
+          });
+        }
+        
       },
       fail: function(info){
         wx.showModal({title:info.errMsg})
       }
+    }
+    if(e && e.keywords){
+      params.querykeywords = e.keywords;
+    }
+    myAmapFun.getPoiAround(params)
+  },
+  bindInput: function(e){
+    var that = this;
+    var url = '../inputtips/input';
+    if(e.target.dataset.latitude && e.target.dataset.longitude && e.target.dataset.city){
+      var dataset = e.target.dataset;
+      url = url + '?lonlat=' + dataset.longitude + ',' + dataset.latitude + '&city=' + dataset.city;
+    }
+    wx.redirectTo({
+      url: url
     })
   },
   showMarkerInfo: function(data,i){

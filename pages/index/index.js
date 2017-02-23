@@ -18,5 +18,10 @@ Page({
     wx.navigateTo({
       url: '../staticmap/staticmap'
     })
+  },
+  naviToNavi: function(){
+    wx.navigateTo({
+      url: '../navigation_car/navigation'
+    })
   }
 })
