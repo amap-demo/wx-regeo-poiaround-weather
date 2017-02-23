@@ -41,6 +41,32 @@ Page({
           });
           that.showMarkerInfo(markersData,0);
         }else{
+          wx.getLocation({
+            type: 'gcj02',
+            success: function(res) {
+              that.setData({
+                latitude: res.latitude
+              });
+              that.setData({
+                longitude: res.longitude
+              });
+              that.setData({
+                city: '北京市'
+              });
+            },
+            fail: function(){
+              that.setData({
+                latitude: 39.909729
+              });
+              that.setData({
+                longitude: 116.398419
+              });
+              that.setData({
+                city: '北京市'
+              });
+            }
+          })
+          
           that.setData({
             textData: {
               name: '抱歉，未找到结果',
