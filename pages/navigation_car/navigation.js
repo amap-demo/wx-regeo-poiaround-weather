@@ -61,9 +61,6 @@ Page({
           });
         }
           
-      },
-      fail: function(info){
-
       }
     })
   },

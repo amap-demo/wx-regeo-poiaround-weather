@@ -25,7 +25,6 @@ Page({
             tips: data.tips
           });
         }
-
       }
     })
   },

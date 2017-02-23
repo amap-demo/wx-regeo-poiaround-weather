@@ -1,7 +1,7 @@
 <view class="container">
-  <view class="naviButton" id="Regeo" bindtouchstart="naviToRegeo">逆地理编码</view>
-  <view class="naviButton" id="weahter" bindtouchstart="naviToWeather">天气</view>
-  <view class="naviButton" id="poi" bindtouchstart="naviToPoi">POI查询</view>
+  <view class="naviButton" id="Regeo" bindtouchstart="naviToRegeo">地址解析</view>
+  <view class="naviButton" id="weahter" bindtouchstart="naviToWeather">天气查询</view>
+  <view class="naviButton" id="poi" bindtouchstart="naviToPoi">周边兴趣点查询</view>
   <view class="naviButton" id="staticmap" bindtouchstart="naviToStatic">静态图</view>
-  <view class="naviButton" id="navi" bindtouchstart="naviToNavi">路线规划</view>
+  <view class="naviButton" id="navi" bindtouchstart="naviToNavi">出行路线规划</view>
 </view>
