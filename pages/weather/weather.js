@@ -16,7 +16,7 @@ Page({
         });
       },
       fail: function(info){
-        wx.showModal({title:info.errMsg})
+        // wx.showModal({title:info.errMsg})
       }
     })
   }

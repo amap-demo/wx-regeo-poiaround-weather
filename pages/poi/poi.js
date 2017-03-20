@@ -26,9 +26,21 @@ Page({
       success: function(data){
         markersData = data.markers;
         var poisData = data.poisData;
+        var markers_new = [];
+        markersData.forEach(function(item,index){
+          markers_new.push({
+            id: item.id,
+            latitude: item.latitude,
+            longitude: item.longitude,
+            iconPath: item.iconPath,
+            width: item.width,
+            height: item.height
+          })
+
+        })
         if(markersData.length > 0){
           that.setData({
-            markers: markersData
+            markers: markers_new
           });
           that.setData({
             city: poisData[0].cityname || ''
@@ -77,7 +89,7 @@ Page({
         
       },
       fail: function(info){
-        wx.showModal({title:info.errMsg})
+        // wx.showModal({title:info.errMsg})
       }
     }
     if(e && e.keywords){
@@ -114,7 +126,14 @@ Page({
       }else{
         data[j].iconPath = "../../img/marker.png";
       }
-      markers.push(data[j]);
+      markers.push({
+        id: data[j].id,
+        latitude: data[j].latitude,
+        longitude: data[j].longitude,
+        iconPath: data[j].iconPath,
+        width: data[j].width,
+        height: data[j].height
+      })
     }
     that.setData({
       markers: markers

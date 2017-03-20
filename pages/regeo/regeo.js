@@ -17,8 +17,16 @@ Page({
       iconWidth: 22,
       iconHeight: 32,
       success: function(data){
+        var marker = [{
+          id: data[0].id,
+          latitude: data[0].latitude,
+          longitude: data[0].longitude,
+          iconPath: data[0].iconPath,
+          width: data[0].width,
+          height: data[0].height
+        }]
         that.setData({
-          markers: data
+          markers: marker
         });
         that.setData({
           latitude: data[0].latitude
@@ -34,7 +42,7 @@ Page({
         })
       },
       fail: function(info){
-        wx.showModal({title:info.errMsg})
+        // wx.showModal({title:info.errMsg})
       }
     })
   }
