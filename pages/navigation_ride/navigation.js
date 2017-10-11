@@ -31,8 +31,8 @@ Page({
       destination: '116.434446,39.90816',
       success: function(data){
         var points = [];
-        if(data.paths && data.paths[0] && data.paths[0].rides){
-          var steps = data.paths[0].rides;
+        if(data.paths && data.paths[0] && data.paths[0].steps){
+          var steps = data.paths[0].steps;
           for(var i = 0; i < steps.length; i++){
             var poLen = steps[i].polyline.split(';');
             for(var j = 0;j < poLen.length; j++){
