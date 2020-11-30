@@ -4,7 +4,7 @@ var lonlat;
 var city;
 Page({
   data: {
-    tips: {}
+    tips: []
   },
   onLoad: function(e){
     lonlat = e.lonlat;
